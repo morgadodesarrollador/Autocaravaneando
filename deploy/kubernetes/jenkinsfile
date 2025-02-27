@@ -8,7 +8,18 @@ pipeline {
         DOCKER_HUB_PASSWORD="Claudia2009?"
         KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
     }
+    agent {
+        docker {
+            image 'bitnami/kubectl'
+        }
+    }
     stages {
+
+        stage('Verificar kubectl') {
+            steps {
+                sh 'kubectl version --client'
+            }
+        }
         stage('Clonar repositorio') {
             steps {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
