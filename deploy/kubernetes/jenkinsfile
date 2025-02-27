@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'bitnami/kubectl'
+        }
+    }
     environment {
         REGISTRY = "morgadoberruezo"  // Cambia por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
@@ -8,11 +12,7 @@ pipeline {
         DOCKER_HUB_PASSWORD="Claudia2009?"
         KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
     }
-    agent {
-        docker {
-            image 'bitnami/kubectl'
-        }
-    }
+    
     stages {
 
         stage('Verificar kubectl') {
