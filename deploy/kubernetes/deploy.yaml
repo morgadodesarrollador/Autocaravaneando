@@ -5,7 +5,7 @@ metadata:
   labels:
     app: my-app
 spec:
-  replicas: 2  # Número de réplicas
+  replicas: 1  # Número de réplicas
   selector:
     matchLabels:
       app: my-app
