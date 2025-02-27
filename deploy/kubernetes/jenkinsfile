@@ -5,7 +5,7 @@ pipeline {
         }
     }
     environment {
-        REGISTRY = "morgadoberruezo"  // Cambia por tu usuario de Docker Hub o tu registro privado
+        REGISTRY = "morgadoberruezo"  // Cambia     por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
         TAG = "latest"
         DOCKER_HUB_USER="morgadoberruezo@gmail.com"
