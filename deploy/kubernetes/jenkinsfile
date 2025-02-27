@@ -4,6 +4,8 @@ pipeline {
         REGISTRY = "morgadoberruezo"  // Cambia por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
         TAG = "latest"
+        DOCKER_HUB_USER="morgadoberruezo@gmail.com"
+        DOCKER_HUB_PASSWORD="Claudia2009?"
         KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
     }
     stages {
