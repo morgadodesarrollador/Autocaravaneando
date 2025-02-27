@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: react-pod
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: react-container
+    image: morgadoberruezo/react:latest
+    ports:
+    - containerPort: 80
+    - containerPort: 3000
+    env:
+    - name: GITHUB
+      value: "https://github.com/morgadodesarrollador/Autocaravaneando.git"
+    - name: USUARIO
+      value: "morgado"
+    - name: PASSWD
+      value: "morgado"
+    - name: HOSTNAME
+      value: "autocaravaneando"
+    - name: PORT_SSH
+      value: "45678"
+    - name: TZ
+      value: "Europe/Madrid"
+    - name: PROYECTO
+      value: "Autocaravaneando"

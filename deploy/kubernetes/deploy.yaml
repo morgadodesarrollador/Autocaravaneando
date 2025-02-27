@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  labels:
+    app: my-app
+spec:
+  replicas: 2  # Número de réplicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: react-container
+        image: morgadoberruezo/react:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: GITHUB
+          value: "https://github.com/morgadodesarrollador/Autocaravaneando.git"
+        - name: USUARIO
+          value: "morgado"
+        - name: PASSWD
+          value: "morgado"
+        - name: HOSTNAME
+          value: "autocaravaneando"
+        - name: PORT_SSH
+          value: "45678"
+        - name: TZ
+          value: "Europe/Madrid"
+        - name: PROYECTO
+          value: "Autocaravaneando"

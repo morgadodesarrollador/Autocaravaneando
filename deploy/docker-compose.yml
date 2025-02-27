@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  servidor:
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/js/react/Dockerfile
+      args: 
+        - CONTEXT=${CONTEXTO}
+        - TZ=${TZ}
+        - PROYECTO=${PROYECTO}
+        - AUTOR=${AUTOR}
+    image: ${AUTOR}/react
+    container_name: ${PROYECTO}
+    hostname: ${HOSTNAME}
+    env_file:
+      - ./.env
+    environment:
+      - USUARIO=${USUARIO}
+      - PASSWORD=${PASSWD}
+    ports:
+      - "${PORT_ORIGEN}:80"
+      - 3010:3000
+    volumes:
+      - ./logs:/root/logs
+      # - ./html:/var/www/html
+    networks:
+      netcaronte:
+        ipv4_address: 172.120.10.4
+
+networks:
+  netcaronte:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.120.10.0/24

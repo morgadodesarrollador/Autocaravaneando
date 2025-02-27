@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autocaravaneando-deployment
+  labels:
+    app: autocaravaneando
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: autocaravaneando
+  template:
+    metadata:
+      labels:
+        app: autocaravaneando
+    spec:
+      containers:
+      - name: autocaravaneando-container
+        image: morgadoberruezo/react:latest
+        ports:
+        - containerPort: 80
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: autocaravaneando-env
+        volumeMounts:
+        - name: logs-volume
+          mountPath: /root/logs
+      volumes:
+      - name: logs-volume
+        hostPath:
+          path: ./logs

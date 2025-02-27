@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  labels:
+    app: react-app
+spec:
+  replicas: 1  # Número de réplicas
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - name: react-container
+        image: morgadoberruezo/react  # Imagen definida en el Docker Compose
+        ports:
+        - containerPort: 80
+        - containerPort: 3000
+        env:  # Variables de entorno
+        - name: USUARIO
+          value: "morgado"
+        - name: PASSWORD
+          value: "morgado"
+        - name: GITHUB
+          value: https://github.com/morgadodesarrollador/Autocaravaneando.git
+        volumeMounts:  # Montar volúmenes
+        - name: logs-volume
+          mountPath: /root/logs
+      volumes:
+      - name: logs-volume
+        hostPath:
+          path: ./logs  # Ruta del host para los logs
+          type: Directory

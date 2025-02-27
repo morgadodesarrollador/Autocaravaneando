@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-auto-pod
+spec:
+  containers:
+  - name: react-container
+    image: morgadoberruezo/react:latest
+    ports:
+    - containerPort: 80
+    envFrom:
+    - configMapRef:
+        name: app-env
+    volumeMounts:
+    - name: logs-volume
+      mountPath: /root/logs
+  volumes:
+  - name: logs-volume
+    hostPath:
+      path: /Users/morgado/Personal/Modulos/HLC/24-25/Caronte/proyectos/Autocaravaneando/kubernetes/logs
+      # path: /home/morgado/devops/cursos/24-25/Caronte/proyectos/Autocaravaneando/kubernetes/logs
+      # type: Directory
+      # type: DirectoryOrCreate
