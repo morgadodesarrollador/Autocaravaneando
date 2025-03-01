@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     environment {
         REGISTRY = "morgadoberruezo"  // Cambia     por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
@@ -15,22 +16,7 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
         }
-        // stage('Construir imagen Docker') {
-        //     steps {
-        //         script {
-        //             sh "docker build -t $REGISTRY/$IMAGE_NAME:$TAG -f www/Dockerfile www"
-        //         }
-        //     }
-        // }
-        // stage('Publicar imagen en Docker Hub') {
-        //     steps {
-        //         script {
-        //             sh "echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USER} --password-stdin"
-        //             sh "docker push $REGISTRY/$IMAGE_NAME:$TAG"
-        //         }
-        //     }
-        // }
-
+       
         stage('Verificar kubectl') {
             steps {
                 sh 'kubectl version --client'
