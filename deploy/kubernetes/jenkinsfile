@@ -25,13 +25,13 @@ pipeline {
         stage('Deploy en Kubernetes') {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'kubeconfig']) {
+                    // withKubeConfig([credentialsId: 'kubeconfig']) {
                         sh "kubectl config current-context" // Verifica el contexto usado
                         sh "ls"
                         sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
                         sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
                     }
-                }
+                // }
             }
         }
     }
