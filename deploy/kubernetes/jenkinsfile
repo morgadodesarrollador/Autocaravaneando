@@ -1,21 +1,21 @@
 pipeline {
-    agent {
-        docker {
-            image 'bitnami/kubectl'
-        }
-    }
+    // agent {
+    //     docker {
+    //         image 'bitnami/kubectl'
+    //     }
+    // }
     environment {
         REGISTRY = "morgadoberruezo"  // Cambia     por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
         TAG = "latest"
         DOCKER_HUB_USER="morgadoberruezo@gmail.com"
         DOCKER_HUB_PASSWORD="Claudia2009?"
-        KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
+        // KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
     }
     
     stages {
 
-        stage('Clonar repositorio git Autocaravaneando') {
+        stage('Clonar repositorio git Autocaravaneando desde Github') {
             steps {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
