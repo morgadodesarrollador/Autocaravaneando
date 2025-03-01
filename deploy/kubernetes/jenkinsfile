@@ -15,12 +15,7 @@ pipeline {
     
     stages {
 
-        stage('Verificar kubectl') {
-            steps {
-                sh 'kubectl version --client'
-            }
-        }
-        stage('Clonar repositorio') {
+        stage('Clonar repositorio git') {
             steps {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
@@ -40,6 +35,12 @@ pipeline {
         //         }
         //     }
         // }
+
+        stage('Verificar kubectl') {
+            steps {
+                sh 'kubectl version --client'
+            }
+        }
         stage('Deploy en Kubernetes') {
             steps {
                 script {
