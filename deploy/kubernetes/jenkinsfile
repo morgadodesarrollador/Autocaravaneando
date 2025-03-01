@@ -1,9 +1,4 @@
 pipeline {
-    // agent {
-    //     docker {
-    //         image 'bitnami/kubectl'
-    //     }
-    // }
     environment {
         REGISTRY = "morgadoberruezo"  // Cambia     por tu usuario de Docker Hub o tu registro privado
         IMAGE_NAME = "react"
