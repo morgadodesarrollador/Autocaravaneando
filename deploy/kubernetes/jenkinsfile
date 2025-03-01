@@ -15,7 +15,7 @@ pipeline {
     
     stages {
 
-        stage('Clonar repositorio git') {
+        stage('Clonar repositorio git Autocaravaneando') {
             steps {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
