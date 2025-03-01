@@ -27,6 +27,7 @@ pipeline {
                 script {
                     withKubeConfig([credentialsId: 'kubeconfig']) {
                         sh "kubectl config current-context" // Verifica el contexto usado
+                        sh "kubectl get nodes"
                         sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
                         sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
                     }
