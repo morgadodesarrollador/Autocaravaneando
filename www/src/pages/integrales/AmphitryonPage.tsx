@@ -9,7 +9,7 @@ export const AmphitryonPage = () => {
       <Grid item xs={1}></Grid>
 
       <Grid item xs={10} textAlign='left'>
-        <h2>Amphitryom 998</h2>
+        <h2>Amphitryom 998-1</h2>
         <p>Esos son los tres ejes de uno de los buques insignia de Benimar: el Amphitryon 998. Una autocaravana integral de 7,4 metros, con dormitorio tipo suite que permite una separación completa de estancias y cama abatible sobre cabina, que añade dos plazas de noche sin comprometer el espacio disponible; por lo que se presenta como un modelo perfecto para familias como parejas que buscan espacio y confort.</p>
       </Grid>
       <Grid item xs={6}>
