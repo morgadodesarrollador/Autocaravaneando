@@ -17,7 +17,7 @@ pipeline {
             }
         }
        
-        stage('Verificar kubectl') {
+        stage('Verificar kubectl 1') {
             steps {
                 sh 'kubectl version --client'
             }
