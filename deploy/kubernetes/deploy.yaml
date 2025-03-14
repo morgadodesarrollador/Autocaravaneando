@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: react-container
-        image: morgadoberruezo/react:latest
+        # image: morgadoberruezo/react:latest
+        image: nginx:latest
         envFrom:
           - configMapRef:
               name: app-env-config
