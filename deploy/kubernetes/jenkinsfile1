@@ -4,6 +4,12 @@ pipeline {
         K8S_SERVER = "https://192.168.49.2:8443"
         K8S_TOKEN = credentials('k8s-token')
         NAMESPACE="default"
+        REGISTRY = "morgadoberruezo"  // Cambia     por tu usuario de Docker Hub o tu registro privado
+        IMAGE_NAME = "react"
+        TAG = "latest"
+        DOCKER_HUB_USER="morgadoberruezo@gmail.com"
+        DOCKER_HUB_PASSWORD="Claudia2009?"
+        // KUBE_CONFIG = credentials('kubeconfig') // Configura una credencial en Jenkins con el Kubeconfig de tu VPS
     }
     stages {
         stage('Clonar repositorio git Autocaravaneando desde Github') {
@@ -22,7 +28,7 @@ pipeline {
             }
         }
         stage('Configurar acceso a Kubernetes') {
-            steps { //conexion jenkins a kubernetes
+            steps {
                 script {
                     sh """
                     kubectl config set-cluster k8s-cluster --server=$K8S_SERVER --insecure-skip-tls-verify=true
@@ -33,15 +39,25 @@ pipeline {
                 }
             }
         }
-        stage('Verificar kubectl 1') {
+         stage('Verificar kubectl 1') {
             steps {
                 sh 'kubectl version --client'
                 // sh 'kubectl config current-context' // Verifica que está usando el contexto correcto
                 sh 'kubectl get nodes' // Confirma conexión con el clúster
             }
         }
+        stage('Deploy en Kubernetes') {
+            steps {
+                script {
+                        sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
+                    }
+            }
+        }
     }
-    
     post {
         success {
             echo "Despliegue completado con éxito"
