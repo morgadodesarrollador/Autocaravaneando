@@ -25,9 +25,9 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-          - name: logs
+          - name: auto-logs
             mountPath: /root/logs
       volumes:
-      - name: logs
+      - name: auto-logs
         persistentVolumeClaim:
           claimName: auto-pvc  # <-- asegúrate de poner el mismo PVC que usaba el pod original
