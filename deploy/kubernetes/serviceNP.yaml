@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+  namespace: sp-auto
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app
+  type: NodePort  # Cambiar a LoadBalancer si usas un proveedor de nube
+  ports:
+  - name: http-port  # Nombre único para este puerto
+    protocol: TCP
+    port: 80          # Puerto expuesto por el servicio
+    targetPort: 80    # Puerto dentro del contenedor
+    nodePort: 30080   # Puerto del nodo (opcional, Kubernetes asignará uno si no lo defines)

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-env-config
+  namespace: sp-auto
+data:
+  CONTEXTO: /home/morgado/devops/cursos/24-25/Caronte
+  AUTOR: morgadoberruezo
+  TZ: Europe/Madrid
+  PROYECTO: Autocaravaneando
+  GITHUB: https://github.com/morgadodesarrollador/Autocaravaneando.git
+  USUARIO: morgado
+  PASSWD: morgado
+  HOSTNAME: autocaravaneando
+  PORT_SSH: "45678"
+  PORT_ORIGEN: "8082" 

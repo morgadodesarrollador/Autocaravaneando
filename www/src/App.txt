@@ -1,0 +1,38 @@
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { Header } from './estructura/header/Header';
+import { Main } from './estructura/main/Main';
+import { Footer } from './estructura/footer/Footer';
+import { Route, Routes } from 'react-router-dom';
+import { HomePage } from './pages/secciones/HomePage';
+import { IntegralesPage } from './pages/integrales/IntegralesPage';
+import { AmphitryonPage } from './pages/integrales/AmphitryonPage';
+import { PerfiladasPage } from './pages/perfiladas/PerfiladasPage';
+import { Mileo297Page } from './pages/perfiladas/Mileo297Page';
+
+function App() {
+  return (
+    <div className='App'>
+      <Header />
+      {/* <Main /> */}
+      
+        <Routes>
+          <Route path='/'  element= {<Main></Main>}>
+            <Route  path='home' element={ <HomePage />} />  
+            <Route path='integrales' element={ <IntegralesPage />}>
+              <Route path='amphitryon' element={ <AmphitryonPage />}  /> 
+            </Route>
+            <Route path='perfiladas' element={ <PerfiladasPage />}>
+              <Route path='mileo297' element={ <Mileo297Page />}  /> 
+            </Route>
+          </Route>
+        </Routes>
+      <Footer />
+    </div>
+    
+    
+  );
+}
+
+export default App;

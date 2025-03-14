@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  namespace: sp-auto
+  labels:
+    app: my-app
+spec:
+  replicas: 1  # Número de réplicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: react-container
+        image: morgadoberruezo/react:latest
+        volumeMounts:
+            - name: auto-env-volume
+              mountPath: /app/.env
+              subPath: .env
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: auto-env-volume
+          configMap:
+            name: app-env-config

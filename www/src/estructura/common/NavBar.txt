@@ -1,0 +1,67 @@
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import HomeIcon from '@mui/icons-material/Home';
+
+
+import React from 'react'
+import { Link } from 'react-router-dom';
+
+export const NavBar = () => {
+  return (
+    <div>
+      <Link to='/home'>
+            <Typography>home</Typography>
+      </Link>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Link to='integrales'>
+            <Typography>Integrales</Typography>
+          </Link>
+        </AccordionSummary>
+        <AccordionDetails>
+          <nav aria-label="main mailbox folders">
+            <Link to='/integrales/amphitryon'>
+              <Button variant="outlined" color="primary" fullWidth>
+                Amphitryon 998
+              </Button>
+            </Link>
+            <Link to='/perfiladas/mileo297'>
+              <Button variant="outlined" color="primary" fullWidth>
+                Rápido M96
+              </Button>
+            </Link>
+            <Link to='home'>
+              <Button variant="outlined" color="primary" fullWidth>
+                Sonic Supreme 700DC
+              </Button>
+            </Link>
+          </nav>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Link to='perfiladas'>
+            <Typography>Perfiladas</Typography>
+          </Link>
+        </AccordionSummary>
+        <AccordionDetails>
+          <nav aria-label="main mailbox folders">
+            <Link to='/perfiladas/mileo297'>
+              <Button variant="outlined" color="primary" fullWidth>
+                Mileo 297
+              </Button>
+            </Link>
+          </nav>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  )
+}
