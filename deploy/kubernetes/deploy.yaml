@@ -24,3 +24,10 @@ spec:
               name: app-env-config
         ports:
         - containerPort: 80
+        volumeMounts:
+          - name: logs
+            mountPath: /root/logs
+      volumes:
+      - name: logs
+        persistentVolumeClaim:
+          claimName: auto-pvc  # <-- asegúrate de poner el mismo PVC que usaba el pod original

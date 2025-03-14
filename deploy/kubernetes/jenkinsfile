@@ -51,6 +51,7 @@ pipeline {
                 script {
                         sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
                         sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
                         sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
                         sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
                     }
