@@ -18,6 +18,7 @@ spec:
       containers:
       - name: react-container
         image: morgadoberruezo/react:latest
+        command: ["bash", "-c", "tail -f /dev/null"]
         # image: nginx:latestdocker compose --env-file .env -f docker-compose.yml up -d --build
         envFrom:
           - configMapRef:
