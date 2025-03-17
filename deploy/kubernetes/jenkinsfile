@@ -15,7 +15,7 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
         }
-        stage('Docker Build & Push') {
+        // stage('Docker Build & Push') {
         //     steps {
         //         withCredentials([usernamePassword(
         //             credentialsId: "${DOCKER_CREDENTIALS_ID}",
