@@ -4,21 +4,34 @@ pipeline {
         K8S_SERVER = "https://192.168.49.2:8443"
         K8S_TOKEN = credentials('k8s-token')
         NAMESPACE="default"
+        DOCKER_IMAGE = "morgadoberruezo/portfolio"
+        DOCKER_TAG = "latest"
+        DOCKER_CREDENTIALS_ID = "docker-hub"
+        REPO="https://github.com/morgadodesarrollador/Autocaravaneando.git"
     }
     stages {
         stage('Clonar repositorio git Autocaravaneando desde Github') {
             steps {
-                git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
+                git branch: 'master', url: $REPO
             }
         }
-        stage('Acciones'){
-            steps{
-                script{
-                    sh """
-                        echo $K8S_SERVER
-                        echo $K8S_TOKEN
-                    """
-                }
+        stage('Docker Build & Push') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: "${DOCKER_CREDENTIALS_ID}",
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    script {
+                        sh """
+                            cd ./deploy
+                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                            docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
+                            docker push $DOCKER_IMAGE:$DOCKER_TAG
+                            docker logout
+                        """
+                    }
+                }   
             }
         }
         stage('Configurar acceso a Kubernetes') {

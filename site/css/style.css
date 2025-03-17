@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Reset */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Main Styling */
+html,
+body {
+	font-family: 'Poppins', sans-serif;
+	color: #1f2038;
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+h1,
+h2 {
+	margin-bottom: 15px;
+}
+
+img {
+	max-width: 100%;
+}
+
+p {
+	font-size: 1rem;
+	margin: 10px 0;
+	line-height: 1.7em;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* Utility Classes */
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+
+.txt-large {
+	font-size: 20px;
+}
+
+.txt-center {
+	text-align: center;
+}
+
+.display-1 {
+	font-size: 3rem;
+	font-weight: 300;
+}
+
+.display-2 {
+	font-size: 2.2rem;
+	font-weight: 300;
+}
+
+.btn {
+	display: inline-block;
+	font-size: 15px;
+	padding: 12px 45px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	border-radius: 4px;
+}
+
+.btn-outline {
+	border: 1px solid #1f2038;
+	color: #1f2038;
+}
+
+.btn-outline:hover {
+	background: #1f2038;
+	color: #fff;
+}
+
+.p-1 {
+	padding: 80px 0;
+}
+
+.pb-1 {
+	padding-bottom: 30px;
+}
+
+.w-70 {
+	width: 70%;
+}
+
+.w-30 {
+	width: 30%;
+}
+
+.w-70,
+.w-30 {
+	margin: 0 auto;
+}
+
+.bk-half {
+	background: linear-gradient(to bottom, #f2f2f2 0%, #f2f2f2 50%, #ffffff 50%, #ffffff 100%);
+}
+
+.bk-half-reverse {
+	background: linear-gradient(to top, #f2f2f2 0%, #f2f2f2 50%, #ffffff 50%, #ffffff 100%);
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-box {
+	flex: 1;
+}
+
+/* Header */
+.mainheader {
+	height: 100vh;
+}
+
+/* Navbar */
+#navbar {
+	height: 80px;
+	background: #1f2038;
+}
+
+#navbar .logo img {
+	height: 50px;
+}
+
+#navbar a {
+	color: #fff;
+	font-size: 18px;
+	font-weight: 300;
+}
+
+#navbar .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+}
+
+#navbar ul {
+	display: flex;
+}
+
+#navbar ul li {
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+/* Showcase */
+#showcase img {
+	height: 350px;
+	border-radius: 50%;
+	border: 8px solid #fff;
+}
+
+/* About */
+#about img {
+	padding-left: 80px;
+}
+
+/* Extract */
+#extract img {
+	padding: 20px 0;
+}
+
+#extract .txt-large {
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+/* Portfolio */
+#portfolio img {
+	height: 450px;
+}
+
+/* Social */
+#social .flex {
+	display: flex;
+}
+
+#social img {
+	margin: 10px;
+}
+
+/* Footer */
+#mainfooter {
+	background: #1f2038;
+	padding: 30px;
+}

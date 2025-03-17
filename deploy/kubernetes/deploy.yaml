@@ -17,11 +17,9 @@ spec:
     spec:
       containers:
       - name: react-container
-        image: morgadoberruezo/react:latest
+        # image: morgadoberruezo/react:latest
+        image: morgadoberruezo/portfolio
         command: ["bash", "-c", "admin/start.sh"]
-
-        # command: ["bash", "-c", "tail -f /dev/null"]
-        # image: nginx:latestdocker compose --env-file .env -f docker-compose.yml up -d --build
         envFrom:
           - configMapRef:
               name: app-env-config
