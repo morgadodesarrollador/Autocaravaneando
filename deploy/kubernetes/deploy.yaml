@@ -18,7 +18,7 @@ spec:
       containers:
       - name: react-container
         # image: morgadoberruezo/react:latest
-        image: morgadoberruezo/portfolio
+        image: morgadoberruezo/autocaravaneando:latest
         command: ["bash", "-c", "admin/start.sh"]
         envFrom:
           - configMapRef:
