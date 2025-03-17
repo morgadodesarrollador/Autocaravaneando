@@ -10,12 +10,12 @@ pipeline {
         REPO="https://github.com/morgadodesarrollador/Autocaravaneando.git"
     }
     stages {
-        stage('Clonar repositorio git Autocaravaneando desde Github') {
+        stage('Clonar repositorio git Autocaravaneando desde Github ok') {
             steps {
                 git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
         }
-        // stage('Docker Build & Push') {
+        // stage('Docker Build & Push') { 
         //     steps {
         //         withCredentials([usernamePassword(
         //             credentialsId: "${DOCKER_CREDENTIALS_ID}",
