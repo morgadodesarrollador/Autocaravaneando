@@ -1,0 +1,2 @@
+ docker buildx build --platform linux/amd64 -f deploy/Dockerfile -t morgadoberruezo/autocaravaneando:latest . --push
+ # en mi mac genero linux/arm64 incompatble con la vps linux/amd64
