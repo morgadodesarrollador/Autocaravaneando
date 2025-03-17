@@ -1,6 +1,7 @@
-version: "3.8"
+version: "3.9"
 services:
   servidor:
+    platform: linux/amd64
     build:
       context: ${CONTEXTO}
       dockerfile: ./dockerfiles/js/react/Dockerfile
