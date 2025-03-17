@@ -6,7 +6,7 @@ metadata:
   labels:
     app: my-app
 spec:
-  replicas: 1  # Número de réplicas
+  replicas: 1  # Número de réplicas en el deploy
   selector:
     matchLabels:
       app: my-app
