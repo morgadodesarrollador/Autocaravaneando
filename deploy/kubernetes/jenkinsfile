@@ -40,6 +40,17 @@ pipeline {
                 sh 'kubectl get nodes' // Confirma conexión con el clúster
             }
         }
+        stage('Deploy en Kubernetes') {
+            steps {
+                script {
+                        sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
+                    }
+            }
+        }
     }
     
     post {

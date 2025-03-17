@@ -14,4 +14,4 @@ spec:
     protocol: TCP
     port: 80          # Puerto expuesto por el servicio
     targetPort: 80    # Puerto dentro del contenedor
-    nodePort: 30080   # Puerto del nodo (opcional, Kubernetes asignará uno si no lo defines)
+    nodePort: 30085   # Puerto del nodo (opcional, Kubernetes asignará uno si no lo defines)
