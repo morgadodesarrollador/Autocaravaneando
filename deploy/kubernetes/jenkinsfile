@@ -59,7 +59,7 @@ pipeline {
                         sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
                         sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
                         sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
-                        sh "kucectl delete deploy react-deployment -n sp-auto"
+                        sh "kubectl delete deploy react-deployment -n sp-auto"
                         sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
                         sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
                     }
