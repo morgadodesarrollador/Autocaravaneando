@@ -16,54 +16,54 @@ pipeline {
             }
         }
         stage('Docker Build & Push') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: "${DOCKER_CREDENTIALS_ID}",
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
-                    script {
-                        sh """
-                            docker ps
-                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                            docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f ./deploy/Dockerfile
-                            docker push $DOCKER_IMAGE:$DOCKER_TAG
-                            docker logout
-                        """
-                    }
-                }   
+        //     steps {
+        //         withCredentials([usernamePassword(
+        //             credentialsId: "${DOCKER_CREDENTIALS_ID}",
+        //             usernameVariable: 'DOCKER_USER',
+        //             passwordVariable: 'DOCKER_PASS'
+        //         )]) {
+        //             script {
+        //                 sh """
+        //                     docker ps
+        //                     echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+        //                     docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f ./deploy/Dockerfile
+        //                     docker push $DOCKER_IMAGE:$DOCKER_TAG
+        //                     docker logout
+        //                 """
+        //             }
+        //         }   
+        //     }
+        // }
+        stage('Configurar acceso a Kubernetes') {
+            steps { //conexion jenkins a kubernetes
+                script {
+                    sh """
+                    kubectl config set-cluster k8s-cluster --server=$K8S_SERVER --insecure-skip-tls-verify=true
+                    kubectl config set-credentials jenkins --token=$K8S_TOKEN
+                    kubectl config set-context jenkins --cluster=k8s-cluster --user=jenkins --namespace=$NAMESPACE
+                    kubectl config use-context jenkins
+                    """
+                }
             }
         }
-        // stage('Configurar acceso a Kubernetes') {
-        //     steps { //conexion jenkins a kubernetes
-        //         script {
-        //             sh """
-        //             kubectl config set-cluster k8s-cluster --server=$K8S_SERVER --insecure-skip-tls-verify=true
-        //             kubectl config set-credentials jenkins --token=$K8S_TOKEN
-        //             kubectl config set-context jenkins --cluster=k8s-cluster --user=jenkins --namespace=$NAMESPACE
-        //             kubectl config use-context jenkins
-        //             """
-        //         }
-        //     }
-        // }
-        // stage('Verificar kubectl 1') {
-        //     steps {
-        //         sh 'kubectl version --client'
-        //         // sh 'kubectl config current-context' // Verifica que está usando el contexto correcto
-        //         sh 'kubectl get nodes' // Confirma conexión con el clúster
-        //     }
-        // }
-        // stage('Deploy en Kubernetes') {
-        //     steps {
-        //         script {
-        //                 sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
-        //                 sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
-        //                 sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
-        //                 sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
-        //                 sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
-        //             }
-        //     }
-        // }
+        stage('Verificar kubectl 1') {
+            steps {
+                sh 'kubectl version --client'
+                // sh 'kubectl config current-context' // Verifica que está usando el contexto correcto
+                sh 'kubectl get nodes' // Confirma conexión con el clúster
+            }
+        }
+        stage('Deploy en Kubernetes') {
+            steps {
+                script {
+                        sh "kubectl apply -f deploy/kubernetes/namespace.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/configMap.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/pvc.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/deploy.yaml"
+                        sh "kubectl apply -f deploy/kubernetes/serviceNP.yaml"
+                    }
+            }
+        }
     }
     
     post {
