@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Clonar repositorio git Autocaravaneando desde Github') {
             steps {
-                git branch: 'master', url: $REPO
+                git branch: 'master', url: 'https://github.com/morgadodesarrollador/Autocaravaneando.git'
             }
         }
         stage('Docker Build & Push') {
