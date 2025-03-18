@@ -46,7 +46,7 @@ pipeline {
                 }
             }
         }
-        stage('Verificar kubectl 1') {
+        stage('Verificar kubectl') {
             steps {
                 sh 'kubectl version --client'
                 // sh 'kubectl config current-context' // Verifica que está usando el contexto correcto
