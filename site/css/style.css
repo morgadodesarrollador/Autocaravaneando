@@ -132,7 +132,8 @@ a {
 /* Navbar */
 #navbar {
 	height: 80px;
-	background: #c9456b;
+	background: green;
+	color: wheat;
 }
 
 #navbar .logo img {
